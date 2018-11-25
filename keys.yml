@@ -1,0 +1,8 @@
+# file: keys.yml
+---
+- hosts: app-servers
+  tasks:
+  - name: Set up authorized_keys for the backup user
+    authorized_key: user=pi key="{{ item }}"
+    with_file:
+    - keys/backup.pub
